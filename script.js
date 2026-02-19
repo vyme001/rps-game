@@ -38,13 +38,17 @@ const usrPosition = function(arr){
     let validate;
 
     while(!Object.keys(arr).includes(validate)){
-         validate = prompt("Choose one: 'rock', 'paper', or 'scissors'.");
-          if(!Object.keys(arr).includes(validate)){
-           validate = prompt(`'${validate}' is an invalid value, try again!`);
-          };
-        };
 
-        return validate;
+        if(validate === undefined){
+            validate = prompt("Choose one: 'rock', 'paper', or 'scissors'.").toLowerCase();
+        }else if(!Object.keys(arr).includes(validate)){
+        validate = prompt(`'${validate}' is an invalid value, try again!`).toLowerCase();
+        }else{
+            return;
+        };
+        };
+        
+    return validate;
 };
 console.log(usrPosition(posRules));
 
