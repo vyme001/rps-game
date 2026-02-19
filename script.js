@@ -11,6 +11,8 @@ const posRules = {
     "paper":"rock",
 };
 
+
+
 /*
 FUNCTION:
 - Get value for pc position on start up
@@ -21,3 +23,18 @@ function pcPosition(){
     return arr[Math.floor(Math.random() * arr.length)];    
 };
 console.log(pcPosition());
+
+
+/*
+FUNCTION:
+- display prompt for user input:
+- text input a string value
+- save the value and return it
+*/
+
+const usrPosition = function(arr){
+    let valid;
+    return Object.keys(arr).includes(prompt("Choose one: 'rock', 'paper', or 'scissors'.")) ?  1 : 0;
+};
+
+console.log(usrPosition(posRules));
