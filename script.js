@@ -53,3 +53,11 @@ const usrPosition = function(arr){
 console.log(usrPosition(posRules));
 
 
+/*
+Scores:
+- Create variables in the global scope for the pc and user both intially value 0
+*/
+let pcScore = 0;
+let userScore = 0;
+
+
