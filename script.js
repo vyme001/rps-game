@@ -29,10 +29,22 @@ FUNCTION:
 - display prompt for user input:
 - text input a string value
 - save the value and return it
+---------------------------------
+ternary operators are only ideal for singleline - simple conditional value assignment
+Use complex while or for loops to have cyclical loops run until the ideal condition is met/true
+- while validate is null, prompt user to enter a valid value unless condition is met
 */
 const usrPosition = function(arr){
-    let validate = prompt("Choose one: 'rock', 'paper', or 'scissors'.");
-    return Object.keys(arr).includes(validate) ? validate : undefined;
+    let validate;
+
+    while(!Object.keys(arr).includes(validate)){
+         validate = prompt("Choose one: 'rock', 'paper', or 'scissors'.");
+          if(!Object.keys(arr).includes(validate)){
+           validate = prompt(`'${validate}' is an invalid value, try again!`);
+          };
+        };
+
+        return validate;
 };
 console.log(usrPosition(posRules));
 
