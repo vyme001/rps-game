@@ -17,7 +17,6 @@ const posRules = {
 FUNCTION:
 - Get value for pc position on start up
 */
-
 function pcPosition(){
     const arr = Object.keys(posRules);
     return arr[Math.floor(Math.random() * arr.length)];    
@@ -31,10 +30,10 @@ FUNCTION:
 - text input a string value
 - save the value and return it
 */
-
 const usrPosition = function(arr){
-    let valid;
-    return Object.keys(arr).includes(prompt("Choose one: 'rock', 'paper', or 'scissors'.")) ?  1 : 0;
+    let validate = prompt("Choose one: 'rock', 'paper', or 'scissors'.");
+    return Object.keys(arr).includes(validate) ? validate : undefined;
 };
-
 console.log(usrPosition(posRules));
+
+
