@@ -67,14 +67,15 @@ FUNCTION:
     - declare the winner of the round
     - += 1 that players score
 */
-function gameRound(v1, v2){
-    new Object
-    if(v1 === v2){
-console.log(`tie; pc[${v1}]:user[${v2}]`);
+function gameRound(pcV, usrV){
+    if(pcV === usrV){
+console.log(`tie; pc[${pcV}]:user[${usrV}]`);
         return;
-    }else if(v2){ //
-        console.log(Object.entries(posRules)[0][0]);
-    }
+    }else {
+      const roundValues = [pcV, usrV];
+       
+       
+    };
     
 };
 
