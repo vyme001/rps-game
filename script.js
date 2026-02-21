@@ -38,9 +38,9 @@ const usrPosition = function(){
     while(!Object.keys(posRules).includes(validate)){
 
         if(validate === undefined){
-            validate = prompt("Choose one: 'rock', 'paper', or 'scissors'.");
+            validate = prompt("Choose one: 'rock', 'paper', or 'scissors'.").toLowerCase();
         }else if(!Object.keys(posRules).includes(validate)){
-        validate = prompt(`'${validate}' is an invalid value (case sensitive), try again!`);
+        validate = prompt(`'${validate}' is an invalid value, try again!`).toLowerCase();
         }else{
             return;
         };
@@ -64,15 +64,19 @@ FUNCTION:
 - It assigns score accordingly and ends the game
 - prompt the winner in the terminal as the game progesses to conclude the winner
 */
-function gameRound(){
-    console.log(pcPosition());
+function gameRound(v1, v2){
+    if(v1 === v2){
+console.log(`tie; pc[${v1}]:user[${v2}]`);
+        return;
+    };
+    
 };
 
 try {
-    const capturePC = pcPosition();
-    const captureUsr = usrPosition();
-    
-    if()
+    const capture = pcPosition();
+    const capture2 = usrPosition();
+
+    gameRound(capture, capture2)
     
 } catch (e) {
     console.log(e.message);
