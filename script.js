@@ -1,5 +1,3 @@
-
-
 /*
 OBJECT
 - Where the name/positons live within a defined rules set
@@ -44,8 +42,7 @@ const usrPosition = function(){
         }else{
             return;
         };
-        };
-        
+        }; 
     return validate;
 };
  
@@ -69,35 +66,36 @@ FUNCTION:
 */
 function gameRound(pcV, usrV){
     console.log(`cache (pc:[${pcV}], user:[${usrV}])`);
-
+    //if either score is at 5 terminate code
+    
+    //removed the if block from out of the find beacuase it executed for each item; 3 arrays = 3 occurances
+           if(pcV === usrV){
+            alert(`Tie: ${pcV} and ${usrV}`);
+            return;
+        };
 
     Object.entries(posRules).find((item)=>{
-        //the match conditon must be iterated first to avoid collision
-        if(pcV === usrV){
-            console.log('Tie');
-            return;
-        }else if(item[0] === pcV && item[1] === usrV){
+        if(item[0] === pcV && item[1] === usrV){
             pcScore += 1;
-            console.log(`pc: ${pcV} beats ${usrV}. Scores: [pc: ${pcScore}, user: ${userScore}]`);
+            alert(`pc: (${pcV}) beats ${usrV}. Scores: [pc: ${pcScore}, user: ${userScore}]`);
             return;
         } else if(item[0] === usrV && item[1] === pcV){
             userScore += 1;
-            console.log(`user: ${usrV} beats ${pcV}. Scores: [user: ${userScore}, pc: ${pcScore}]`);
+            alert(`user: (${usrV}) beats ${pcV}. Scores: [user: ${userScore}, pc: ${pcScore}]`);
             return;
         };
         return;
     });
-
     };
 
 
 //initiate execution
 try {
-    const pcCurrent = pcPosition();
-    const usrCurrent = usrPosition();
-
-    gameRound(pcCurrent, usrCurrent)
-    
+    if(pcScore != 5 || userScore != 5){
+        const pcCurrent = pcPosition();
+        const usrCurrent = usrPosition();
+        gameRound(pcCurrent, usrCurrent);
+        };
 } catch (e) {
     console.log(e.message);
-}
+};
