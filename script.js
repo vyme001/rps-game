@@ -32,15 +32,15 @@ ternary operators are only ideal for singleline - simple conditional value assig
 Use complex while or for loops to have cyclical loops run until the ideal condition is met/true
 - while validate is null, prompt user to enter a valid value unless condition is met
 */
-const usrPosition = function(arr){
+const usrPosition = function(){
     let validate;
 
-    while(!Object.keys(arr).includes(validate)){
+    while(!Object.keys(posRules).includes(validate)){
 
         if(validate === undefined){
-            validate = prompt("Choose one: 'rock', 'paper', or 'scissors'.").toLowerCase();
-        }else if(!Object.keys(arr).includes(validate)){
-        validate = prompt(`'${validate}' is an invalid value, try again!`).toLowerCase();
+            validate = prompt("Choose one: 'rock', 'paper', or 'scissors'.");
+        }else if(!Object.keys(posRules).includes(validate)){
+        validate = prompt(`'${validate}' is an invalid value (case sensitive), try again!`);
         }else{
             return;
         };
@@ -69,8 +69,10 @@ function gameRound(){
 };
 
 try {
-    const capture = pcPosition();
-    console.log(capture);
+    const capturePC = pcPosition();
+    const captureUsr = usrPosition();
+    console.log(capturePC);
+    console.log(captureUsr);
     
 } catch (e) {
     console.log(e.message);
