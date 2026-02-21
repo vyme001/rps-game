@@ -61,14 +61,20 @@ let userScore = 0;
 /*
 FUNCTION:
 - gameRound judges the progress of the game
-- It assigns score accordingly and ends the game
-- prompt the winner in the terminal as the game progesses to conclude the winner
+- take the values from the user per round and create a single property object
+- judge the new object against every property of the posRules object
+- if the two isolated properties match:
+    - declare the winner of the round
+    - += 1 that players score
 */
 function gameRound(v1, v2){
+    new Object
     if(v1 === v2){
 console.log(`tie; pc[${v1}]:user[${v2}]`);
         return;
-    };
+    }else if(v2){ //
+        console.log(Object.entries(posRules)[0][0]);
+    }
     
 };
 
