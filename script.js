@@ -1,4 +1,3 @@
-console.log('test connection');
 
 
 /*
@@ -70,8 +69,9 @@ function gameRound(){
 };
 
 try {
-    console.log('pc: ',pcPosition());
-    console.log('user: ',usrPosition());
+    const capture = pcPosition();
+    console.log(capture);
+    
 } catch (e) {
     console.log(e.message);
 }
