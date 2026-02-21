@@ -1,4 +1,3 @@
-console.log('test connection');
 
 
 /*
@@ -21,7 +20,6 @@ function pcPosition(){
     const arr = Object.keys(posRules);
     return arr[Math.floor(Math.random() * arr.length)];    
 };
-console.log(pcPosition());
 
 
 /*
@@ -50,8 +48,7 @@ const usrPosition = function(arr){
         
     return validate;
 };
-console.log(usrPosition(posRules));
-
+ 
 
 /*
 Scores:
@@ -61,3 +58,20 @@ let pcScore = 0;
 let userScore = 0;
 
 
+/*
+FUNCTION:
+- gameRound judges the progress of the game
+- It assigns score accordingly and ends the game
+- prompt the winner in the terminal as the game progesses to conclude the winner
+*/
+function gameRound(){
+    console.log(pcPosition());
+};
+
+try {
+    const capture = pcPosition();
+    console.log(capture);
+    
+} catch (e) {
+    console.log(e.message);
+}
