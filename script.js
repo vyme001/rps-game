@@ -78,11 +78,11 @@ function gameRound(pcV, usrV){
             return;
         }else if(item[0] === pcV && item[1] === usrV){
             pcScore += 1;
-            console.log(`${pcV} beats ${usrV}. Scors: [pc: ${pcScore}, user: ${userScore}]`);
+            console.log(`pc: ${pcV} beats ${usrV}. Scores: [pc: ${pcScore}, user: ${userScore}]`);
             return;
         } else if(item[0] === usrV && item[1] === pcV){
             userScore += 1;
-            console.log(`${usrV} beats ${pcV}. Score: [user: ${userScore}, pc: ${pcScore}]`);
+            console.log(`user: ${usrV} beats ${pcV}. Scores: [user: ${userScore}, pc: ${pcScore}]`);
             return;
         };
         return;
