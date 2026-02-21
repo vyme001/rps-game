@@ -71,8 +71,8 @@ function gameRound(){
 try {
     const capturePC = pcPosition();
     const captureUsr = usrPosition();
-    console.log(capturePC);
-    console.log(captureUsr);
+    
+    if()
     
 } catch (e) {
     console.log(e.message);
