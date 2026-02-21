@@ -68,22 +68,35 @@ FUNCTION:
     - += 1 that players score
 */
 function gameRound(pcV, usrV){
-    if(pcV === usrV){
-console.log(`tie; pc[${pcV}]:user[${usrV}]`);
+    console.log(`cache (pc:[${pcV}], user:[${usrV}])`);
+
+
+    Object.entries(posRules).find((item)=>{
+        //the match conditon must be iterated first to avoid collision
+        if(pcV === usrV){
+            console.log('Tie');
+            return;
+        }else if(item[0] === pcV && item[1] === usrV){
+            pcScore += 1;
+            console.log(`${pcV} beats ${usrV}. Scors: [pc: ${pcScore}, user: ${userScore}]`);
+            return;
+        } else if(item[0] === usrV && item[1] === pcV){
+            userScore += 1;
+            console.log(`${usrV} beats ${pcV}. Score: [user: ${userScore}, pc: ${pcScore}]`);
+            return;
+        };
         return;
-    }else {
-      const roundValues = [pcV, usrV];
-       
-       
+    });
+
     };
-    
-};
 
+
+//initiate execution
 try {
-    const capture = pcPosition();
-    const capture2 = usrPosition();
+    const pcCurrent = pcPosition();
+    const usrCurrent = usrPosition();
 
-    gameRound(capture, capture2)
+    gameRound(pcCurrent, usrCurrent)
     
 } catch (e) {
     console.log(e.message);
