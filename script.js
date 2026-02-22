@@ -66,7 +66,6 @@ FUNCTION:
 */
 function gameRound(pcV, usrV){
     console.log(`cache (pc:[${pcV}], user:[${usrV}])`);
-    //if either score is at 5 terminate code
     
     //removed the if block from out of the find beacuase it executed for each item; 3 arrays = 3 occurances
            if(pcV === usrV){
@@ -89,13 +88,21 @@ function gameRound(pcV, usrV){
     };
 
 
-//initiate execution
+
+// while scores are not equal to 5 do this code block; run the string returning functions. assign their returning value into a variable
+// feed the variable into the game processes function
+// do this until one players scores 5 points
+while(pcScore != 5 && userScore != 5){
 try {
-    if(pcScore != 5 || userScore != 5){
-        const pcCurrent = pcPosition();
-        const usrCurrent = usrPosition();
-        gameRound(pcCurrent, usrCurrent);
-        };
+    const pcCurrent = pcPosition();
+    const usrCurrent = usrPosition();
+    gameRound(pcCurrent, usrCurrent);
 } catch (e) {
     console.log(e.message);
+};
+};
+
+//When a player wins alert the game
+if(pcScore === 5 || userScore === 5){
+  pcScore > userScore ? alert(`pc wins! score [${pcScore} to ${userScore}]`) : alert(`user wins! score [${userScore} to ${pcScore}]`);
 };
