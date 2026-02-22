@@ -1,7 +1,8 @@
-/*
-OBJECT
-- Where the name/positons live within a defined rules set
-*/
+
+
+let PCsScore = 0;
+let usersScore = 0;
+
 const positionRules = {
     "rock":"scissors",
     "scissors":"paper",
@@ -9,27 +10,13 @@ const positionRules = {
 };
 
 
-
-/*
-FUNCTION:
-- Get value for pc position on start up
-*/
 function generatePCposition(){
     const arrPositionRules = Object.keys(positionRules);
     return arrPositionRules[Math.floor(Math.random() * arrPositionRules.length)];    
 };
 
 
-/*
-FUNCTION:
-- display prompt for user input:
-- text input a string value
-- save the value and return it
----------------------------------
-ternary operators are only ideal for singleline - simple conditional value assignment
-Use complex while or for loops to have cyclical loops run until the ideal condition is met/true
-- while validate is null, prompt user to enter a valid value unless condition is met
-*/
+
 const generateUserPosition = function(){
     let validatePosition;
 
@@ -47,23 +34,7 @@ const generateUserPosition = function(){
 };
  
 
-/*
-Scores:
-- Create variables in the global scope for the pc and user both intially value 0
-*/
-let PCsScore = 0;
-let usersScore = 0;
-
-
-/*
-FUNCTION:
-- gameRound judges the progress of the game
-- take the values from the user per round and create a single property object
-- judge the new object against every property of the positionRules object
-- if the two isolated properties match:
-    - declare the winner of the round
-    - += 1 that players score
-*/
+//Game logic engine
 function gameEngine(PCposition, UserPosition){
     console.log(`cache (pc:[${PCposition}], user:[${UserPosition}])`);
     
@@ -89,9 +60,9 @@ function gameEngine(PCposition, UserPosition){
 
 
 
-// while scores are not equal to 5 do this code block; run the string returning functions. assign their returning value into a variable
-// feed the variable into the game processes function
-// do this until one players scores 5 points
+//while no player has gained 5 points;
+// generate player position values
+// giving  those player positions to the gameEngine Fx
 while(PCsScore != 5 && usersScore != 5){
 try {
     const pcsCurrentPosition = generatePCposition();
@@ -102,7 +73,7 @@ try {
 };
 };
 
-//When a player wins alert the game
+//Decalre the winner in a alert once either players score reaches the Number value 5
 if(PCsScore === 5 || usersScore === 5){
   PCsScore > usersScore ? alert(`pc wins! score [${PCsScore} to ${usersScore}]`) : alert(`user wins! score [${usersScore} to ${PCsScore}]`);
 };
