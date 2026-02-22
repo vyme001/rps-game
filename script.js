@@ -2,7 +2,7 @@
 OBJECT
 - Where the name/positons live within a defined rules set
 */
-const posRules = {
+const positionRules = {
     "rock":"scissors",
     "scissors":"paper",
     "paper":"rock",
@@ -14,9 +14,9 @@ const posRules = {
 FUNCTION:
 - Get value for pc position on start up
 */
-function pcPosition(){
-    const arr = Object.keys(posRules);
-    return arr[Math.floor(Math.random() * arr.length)];    
+function generatePCposition(){
+    const arrPositionRules = Object.keys(positionRules);
+    return arrPositionRules[Math.floor(Math.random() * arrPositionRules.length)];    
 };
 
 
@@ -30,20 +30,20 @@ ternary operators are only ideal for singleline - simple conditional value assig
 Use complex while or for loops to have cyclical loops run until the ideal condition is met/true
 - while validate is null, prompt user to enter a valid value unless condition is met
 */
-const usrPosition = function(){
-    let validate;
+const generateUserPosition = function(){
+    let validatePosition;
 
-    while(!Object.keys(posRules).includes(validate)){
+    while(!Object.keys(positionRules).includes(validatePosition)){
 
-        if(validate === undefined){
-            validate = prompt("Choose one: 'rock', 'paper', or 'scissors'.").toLowerCase();
-        }else if(!Object.keys(posRules).includes(validate)){
-        validate = prompt(`'${validate}' is an invalid value, try again!`).toLowerCase();
+        if(validatePosition === undefined){
+            validatePosition = prompt("Choose one: 'rock', 'paper', or 'scissors'.").toLowerCase();
+        }else if(!Object.keys(positionRules).includes(validatePosition)){
+        validatePosition = prompt(`'${validatePosition}' is not invalid, try again!`).toLowerCase();
         }else{
             return;
         };
         }; 
-    return validate;
+    return validatePosition;
 };
  
 
@@ -51,36 +51,36 @@ const usrPosition = function(){
 Scores:
 - Create variables in the global scope for the pc and user both intially value 0
 */
-let pcScore = 0;
-let userScore = 0;
+let PCsScore = 0;
+let usersScore = 0;
 
 
 /*
 FUNCTION:
 - gameRound judges the progress of the game
 - take the values from the user per round and create a single property object
-- judge the new object against every property of the posRules object
+- judge the new object against every property of the positionRules object
 - if the two isolated properties match:
     - declare the winner of the round
     - += 1 that players score
 */
-function gameRound(pcV, usrV){
-    console.log(`cache (pc:[${pcV}], user:[${usrV}])`);
+function gameEngine(PCposition, UserPosition){
+    console.log(`cache (pc:[${PCposition}], user:[${UserPosition}])`);
     
     //removed the if block from out of the find beacuase it executed for each item; 3 arrays = 3 occurances
-           if(pcV === usrV){
-            alert(`Tie: ${pcV} and ${usrV}`);
+           if(PCposition === UserPosition){
+            alert(`Tie: ${PCposition} and ${UserPosition}`);
             return;
         };
 
-    Object.entries(posRules).find((item)=>{
-        if(item[0] === pcV && item[1] === usrV){
-            pcScore += 1;
-            alert(`pc: (${pcV}) beats ${usrV}. Scores: [pc: ${pcScore}, user: ${userScore}]`);
+    Object.entries(positionRules).find((positionPair)=>{
+        if(positionPair[0] === PCposition && positionPair[1] === UserPosition){
+            PCsScore += 1;
+            alert(`pc: (${PCposition}) beats ${UserPosition}. Scores: [pc: ${PCsScore}, user: ${usersScore}]`);
             return;
-        } else if(item[0] === usrV && item[1] === pcV){
-            userScore += 1;
-            alert(`user: (${usrV}) beats ${pcV}. Scores: [user: ${userScore}, pc: ${pcScore}]`);
+        } else if(positionPair[0] === UserPosition && positionPair[1] === PCposition){
+            usersScore += 1;
+            alert(`user: (${UserPosition}) beats ${PCposition}. Scores: [user: ${usersScore}, pc: ${PCsScore}]`);
             return;
         };
         return;
@@ -92,17 +92,17 @@ function gameRound(pcV, usrV){
 // while scores are not equal to 5 do this code block; run the string returning functions. assign their returning value into a variable
 // feed the variable into the game processes function
 // do this until one players scores 5 points
-while(pcScore != 5 && userScore != 5){
+while(PCsScore != 5 && usersScore != 5){
 try {
-    const pcCurrent = pcPosition();
-    const usrCurrent = usrPosition();
-    gameRound(pcCurrent, usrCurrent);
+    const pcsCurrentPosition = generatePCposition();
+    const usersCurrentPosition = generateUserPosition();
+    gameEngine(pcsCurrentPosition, usersCurrentPosition);
 } catch (e) {
     console.log(e.message);
 };
 };
 
 //When a player wins alert the game
-if(pcScore === 5 || userScore === 5){
-  pcScore > userScore ? alert(`pc wins! score [${pcScore} to ${userScore}]`) : alert(`user wins! score [${userScore} to ${pcScore}]`);
+if(PCsScore === 5 || usersScore === 5){
+  PCsScore > usersScore ? alert(`pc wins! score [${PCsScore} to ${usersScore}]`) : alert(`user wins! score [${usersScore} to ${PCsScore}]`);
 };
